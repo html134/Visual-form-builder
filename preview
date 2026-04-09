@@ -1,0 +1,13 @@
+// app/preview/page.tsx
+import React from 'react';
+import Navbar from '../../components/Navbar';
+
+export default function PreviewPage() {
+  return (
+    <div>
+      <Navbar />
+      <h1>Preview Page</h1>
+      <p>This page will display the created form in the future.</p>
+    </div>
+  );
+}
