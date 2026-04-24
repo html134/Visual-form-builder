@@ -1,24 +1,14 @@
 "use client";
 import React, { useState } from 'react';
-interface InputObject {
-  id: number;
-  type: string;
-  label: string;
+
+interface FormBuilderProps {
+  inputs: { id: number; type: string; label: string }[];
+  selectedType: string;
+  setSelectedType: (type: string) => void;
+  onAddInput: () => void;
 }
 
-export default function FormBuilder() {
-  const [inputs, setInputs] = useState<InputObject[]>([]);
-  const [selectedType, setSelectedType] = useState('text');
-
-  function addInput() {
-    const newInput: InputObject = {
-      id: inputs.length + 1,
-      type: selectedType,
-      label: `Input ${inputs.length + 1}`,
-    };
-    setInputs([...inputs, newInput]);
-  }
-
+export default function FormBuilder({ inputs, selectedType, setSelectedType, onAddInput }: FormBuilderProps) {
   return (
     <div className="form-container">
       <h2 className="form-title">Form Builder</h2>
@@ -37,7 +27,7 @@ export default function FormBuilder() {
         </select>
       </label>
       
-      <button className="form-button" onClick={addInput}>Add Input</button>
+      <button className="form-button" onClick={onAddInput}>Add Input</button>
 
       <ul className="form-list">
         {inputs.map((input) => (
